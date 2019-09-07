@@ -1,13 +1,21 @@
 help:
-	cat Makefile
+	@echo "Jobs and Growth, GovHack 2019"
+	@echo "==============================="
+	@echo "Authors: Aqeel Akber"
+	@echo "         Mahasen Sooriyabandara"
+	@echo "Built with Composure..."
+	@echo "==============================="
+	@echo "> reqs/git - pulls / updates git submodules"
+	@echo "> compose/dev - runs docker-compose for local development, pass args for different commands"
+	@echo "> compose/dev/bash - cracks into container /bin/bash debugging, pass service for container"
 
-zeppelin/run:
-	sudo docker run -p 7077:7077 -p 8080:8080 --privileged=true \
-	-v `pwd`/zeppelin/logs:/logs \
-	-v `pwd`/zeppelin/notebook:/notebook \
-	-v `pwd`/JobsAndGrowth/data:/data \
-	-e ZEPPELIN_NOTEBOOK_DIR='/notebook' \
-	-e ZEPPELIN_LOG_DIR='/logs' \
-	-d apache/zeppelin:0.8.1 \
-	/zeppelin/bin/zeppelin.sh
+reqs/git:
+	git submodule update --recursive --remote --init
 
+args=config
+compose/dev:
+	sudo docker-compose -f docker-compose.yml $(args)
+
+service=zeppelin_1
+compose/dev/bash:
+	sudo docker exec -it `basename $(PWD)`_$(service) /bin/bash
