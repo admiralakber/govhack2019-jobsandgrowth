@@ -1383,7 +1383,7 @@
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
-    "looknfeel": "report",
+    "looknfeel": "default",
     "personalizedMode": "false"
   },
   "info": {}
