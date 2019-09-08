@@ -24,3 +24,6 @@ For entrepreneurs, our platform provides a rich interface to visualize, at a gla
 - [ANZSIC 2006 DIVISION, SUBDIVISION, GROUP AND CLASS CODES AND TITLES](https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument): We used this to understand the ANSZIC hierarchy
 - [CONVERTING DATA TO THE AUSTRALIAN STATISTICAL GEOGRAPHY STANDARD (ASGS)](https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Converting+Data+to+the+ASGS#Anchor1): We used this to convert between different ASGS levels
 
+
+## Other
+- [Stocktake of innovation precincts](https://docs.google.com/spreadsheets/d/1PwEnr4iRKqVL2NNUoHLF38k_zTbXBflAz1d9Aig_SY4/edit#gid=1622934149): List of the innovation precincts in Australia
