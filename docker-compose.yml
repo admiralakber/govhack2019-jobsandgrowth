@@ -1,0 +1,17 @@
+version: '2.3'
+
+services:
+  zeppelin:
+    image: apache/zeppelin:0.8.1
+    volumes:
+      - ./zeppelin/logs:/logs
+      - ./zeppelin/notebook:/notebook
+      - ./JobsAndGrowth/data:/data
+    environment:
+      - ZEPPELIN_NOTEBOOK_DIR=/notebook
+      - ZEPPELIN_LOG_DIR=/logs
+    ports:
+      - 7077:7077
+      - 8080:8080
+    privileged: true
+    command: /zeppelin/bin/zeppelin.sh
