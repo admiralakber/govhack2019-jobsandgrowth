@@ -1,0 +1,16 @@
+---
+title: Find a Job
+subtitle: Job Seekers, Skilled Migrants
+layout: default
+modal-id: 1
+date: 2019-09-08
+img: job-seeker.jpg
+thumbnail: job-seeker.jpg
+alt: image-alt
+project-date: 2019-09-08
+client: Start Bootstrap
+category: Web Development
+description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+
+---
+

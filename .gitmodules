@@ -1,0 +1,4 @@
+[submodule "letsencrypt_nginx"]
+	path = letsencrypt_nginx
+	url = https://github.com/thaum0/composure-letsencrypt-nginx
+	branch = master

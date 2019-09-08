@@ -6,6 +6,8 @@ services:
     volumes:
       - ./zeppelin/logs:/logs
       - ./zeppelin/notebook:/notebook
+      - ./zeppelin/zeppelin-site.xml.template:/zeppelin/conf/zeppelin-site.xml
+      - ./zeppelin/interpreter.json:/zeppelin/conf/interpreter.json
       - ./JobsAndGrowth/data:/data
     environment:
       - ZEPPELIN_NOTEBOOK_DIR=/notebook
@@ -15,3 +17,11 @@ services:
       - 8080:8080
     privileged: true
     command: /zeppelin/bin/zeppelin.sh
+
+  site:
+    image: jekyll/jekyll:latest
+    volumes:
+      - ./site/:/srv/jekyll
+    ports:
+      - 4000:4000
+    command: jekyll serve --future
