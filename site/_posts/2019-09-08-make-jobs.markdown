@@ -1,0 +1,36 @@
+---
+title: Start a Business
+subtitle: Entrepreneurs, SME
+layout: default
+modal-id: 2
+date: 2019-09-08
+img: new-business.jpg
+thumbnail: new-business.jpg
+alt: image-alt
+project-date: April 2014
+client: Start Bootstrap
+category: Web Development
+description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+
+---
+
+<style>
+.iframe-container {
+  overflow: hidden;
+  padding-top: 1000%;
+  position: relative;
+}
+ 
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+</style>
+
+<div class="iframe-container">
+<iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EP3DHFMC/paragraph/20190907-134737_1172436355?asIframe"></iframe>
+</div>

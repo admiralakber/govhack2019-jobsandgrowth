@@ -1,0 +1,79 @@
+url: https://jobsandgrowth.govhack.thaum.io
+baseurl: ""
+zeppelin: "localhost:8080"
+
+# Site settings
+title: Jobs And Growth
+email: contact@thaum.io
+description: "Jobs and Growth as told by Artificial Intelligence (GovHack 2019)"
+
+
+# Team names, titles and social links
+people:
+- name: Aqeel Akber
+  pic: 1
+  position: Founder of <a href="https://thaum.io" style="color:#8980fe; font-weight:bold">Thaum</a>
+  social:
+    - title: linkedin
+      url: https://au.linkedin.com/in/aqeelakber
+    - title: twitter
+      url: https://twitter.com/admiralakber
+    - title: facebook
+      url: https://facebook.com/aqeel.akber
+    - title: github
+      url: https://github.com/admiralakber
+    - title: envelope
+      url: mailto:aqeel@thaum.io
+    - title: globe
+      url: https://thaum.io
+
+- name: Mahasen Sooriyabandara
+  pic: 2
+  position: Founder of <a href="https://thaum.io" style="color:#8980fe; font-weight:bold">Thaum</a>
+  social:
+    - title: linkedin
+      url: https://au.linkedin.com/in/mahasen-s
+    - title: github
+      url: https://github.com/mahasen-s
+    - title: envelope
+      url: mailto:mahasen@thaum.io
+    - title: globe
+      url: https://thaum.io
+
+- name: Prithvi Reddy
+  pic: 3
+  position: Founder of <a href="https://thaum.io" style="color:#8980fe; font-weight:bold">Thaum</a>
+  social:
+    - title: linkedin
+      url: https://au.linkedin.com/in/mahasen-s
+    - title: github
+      url: https://github.com/pmRed
+    - title: envelope
+      url: mailto:prithvi@thaum.io
+    - title: globe
+      url: https://thaum.io
+
+- name: Frank Zhao
+  pic: 4
+  position: Awesome friend and Connoisseur of Tech
+  social:
+    - title: github
+      url: https://github.com/frankzhao
+    - title: globe
+      url: https://frankzhao.com.au
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+  - title: globe
+    url: https://thaum.io
+  - title: github
+    url: http://github.com/thaum0
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: 56 Mills Road, Acton 2601
+  - line: Australian National University
+
+# Build settings
+markdown: kramdown
+permalink: pretty

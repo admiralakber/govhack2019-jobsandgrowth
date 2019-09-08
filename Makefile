@@ -12,6 +12,11 @@ help:
 reqs/git:
 	git submodule update --recursive --remote --init
 
+
+domain=jobsandgrowth.govhack.thaum.io
+setup/prod:
+	cd core/composure-letsencrypt-nginx; make setup/cert domain=$(domain)
+
 args=config
 compose/dev:
 	sudo docker-compose -f docker-compose.yml $(args)
@@ -19,3 +24,7 @@ compose/dev:
 service=zeppelin_1
 compose/dev/bash:
 	sudo docker exec -it `basename $(PWD)`_$(service) /bin/bash
+
+compose/prod:
+	sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f letsencrypt_nginx/docker-compose.yml $(args)
+
