@@ -4,14 +4,14 @@ Agency Jekyll theme
 Agency theme based on [Agency bootstrap theme ](https://startbootstrap.com/template-overviews/agency/)
 
 # Question
-How can we use open dataset to help jobseekers and entrepreneurs take advantage of their skills and emerging market opportunities?
+How can we use open datasets to help job-seekers and entrepreneurs take advantage of their skills and emerging market opportunities?
 
-# How to use
+# Solution
 Our solution uses machine learning and AI to predict changes in the job market, at a national and regional level.
 
-JobsAndGrowth allows jobseekers to make the most of their abilties. You can find out what jobs will be in demand in what state and hwo much they will pay, up to 5 years from now. The provides jobseekers with a broad array of choices that they can make, to balance different incentives. Navigating these choices is easy with our simple, intuitive, and reactive interface, which allows you to search and filter by the criteria that are relevant to you. Interested making a career change to a similar job in your state? We can help. Interested in moving interstate to take advantage of higher average wages for your career? We've got you covered.
+JobsAndGrowth allows job-seekers to make the most of their abilities. You can find out what jobs will be in demand in what state and hwo much they will pay, using AI predictions for up to 5 years into the future. The provides job-seekers with a broad array of choices that they can make, to balance different incentives. Navigating these choices is easy with our simple, intuitive, and reactive interface, which allows you to search and filter by the criteria that are relevant to you. Interested making a career change to a similar job in your state? We can help. Interested in moving interstate to take advantage of higher average wages for your career? We've got you covered.
 
-For entrepreneurs, our platform provides a rich interface to visualise, at a glance, the current market trends in your industry and breakdowns of your income and expenses. You can see how historical trends in profits and expenses and average profit rates for businessed in your field. We also connect you to the job market.
+For entrepreneurs, our platform provides a rich interface to visualize, at a glance, the current market trends in your industry and breakdowns of your income and expenses. You can see how historical trends in profits and expenses and average profit rates for businesses in your field. We also connect you to the job market.
 
 # Datasets
 ## ATO
