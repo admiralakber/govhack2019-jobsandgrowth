@@ -1,0 +1,2651 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python.conda activate govhack2019",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 03:27:20.344",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u0027govhack2019\u0027 is activated"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567913233018_-2116972679",
+      "id": "20190908-032713_250193819",
+      "dateCreated": "2019-09-08 03:27:13.018",
+      "dateStarted": "2019-09-08 03:27:20.351",
+      "dateFinished": "2019-09-08 03:27:22.145",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\npd.__version__",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 04:41:10.403",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u00270.25.1\u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567913240344_177681720",
+      "id": "20190908-032720_480677807",
+      "dateCreated": "2019-09-08 03:27:20.344",
+      "dateStarted": "2019-09-08 04:41:10.407",
+      "dateFinished": "2019-09-08 04:41:10.411",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nprint(\u0027%html \u003ch2 style\u003d\"text-align: centre;\"\u003ePlease enter your occupation and state of residence:\u003c/h2\u003e\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 04:55:11.210",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch2 style\u003d\"text-align: centre;\"\u003ePlease enter your occupation and state of residence:\u003c/h2\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567918509233_-1926979710",
+      "id": "20190908-045509_1172605313",
+      "dateCreated": "2019-09-08 04:55:09.233",
+      "dateStarted": "2019-09-08 04:55:11.232",
+      "dateFinished": "2019-09-08 04:55:11.243",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf_anzsco \u003d pd.read_pickle(\u0027/data/pickles/anzsco_small.pkl\u0027)\n\nanzsco_codes \u003d df_anzsco[\u0027ANZSCO\u0027].unique()\nstates       \u003d df_anzsco[\u0027State\u0027].unique()\n\nstate_names\u003d [\u0027Australian Capital Territory\u0027, \u0027New South Wales\u0027, \u0027Victoria\u0027, \u0027Queensland\u0027, \"Tasmania\",\u0027South Australia\u0027, \u0027Northern Territory\u0027, \u0027Western Australia\u0027]\nstate_abbr\u003d [\u0027ACT\u0027, \u0027NSW\u0027, \u0027VIC\u0027, \u0027QLD\u0027, \u0027TAS\u0027, \u0027SA\u0027, \u0027NT\u0027, \u0027WA\u0027]\nstate_dict \u003d {x:state_names[i] for i,x in enumerate(state_abbr)}\n\nanzsco_dict_vals \u003d df_anzsco[[\u0027ANZSCO\u0027, \u0027ANZSCO Name\u0027]].sort_values(by\u003d\u0027ANZSCO Name\u0027).drop_duplicates().values\nanzsco_dict \u003d {x[0]: x[1] for x in anzsco_dict_vals}\n\n\nuser_anzsco_code \u003d z.select(\"Occupation (ANZSCO Unit Group)\", anzsco_dict_vals)\nuser_state \u003d z.select(\"State\", list(zip(state_abbr, state_names)) )\n\n\nuser_anzsco_name \u003d anzsco_dict[str(user_anzsco_code)]\nuser_state_name \u003d state_dict[user_state]\nuser_anzsco_minorgroup \u003d user_anzsco_code[:3]\n\nprint(\u0027%html \u003ch2 style\u003d\"text-align: centre;\"\u003e{} in {}\u003c/h2\u003e\u0027.format(user_anzsco_name, user_state_name))\n\ndf_user \u003d df_anzsco[(df_anzsco[\u0027ANZSCO\u0027]\u003d\u003duser_anzsco_code) \u0026 (df_anzsco[\u0027State\u0027]\u003d\u003duser_state)][df_anzsco.columns[4:]]\n\ndf_user_state \u003d df_user[[\u0027Average Salary ($) (State)\u0027, \u0027Predicted 5-Year Wage Growth ($) (State)\u0027,\u0027Predicted New Jobs Over Next 5 Years (State)\u0027]]\ndf_user_national \u003d df_user[[\u0027Average Salary ($) (National)\u0027, \u0027Predicted 5-Year Wage Growth ($) (National)\u0027,\u0027Predicted New Jobs Over Next 5 Years (National)\u0027]]\n\n\ndf_user_summary \u003d pd.DataFrame(data \u003d np.concatenate([df_user_state.values,df_user_national.values]).T, columns \u003d [\u0027State\u0027,\u0027National\u0027], index\u003d[\u0027%html  \u003cb\u003e\u003ch4 style\u003d\"text-align: centre; font-weight: bold\"\u003e{}\u003c/h4\u003e \u003c/b\u003e\u0027.format(x) for x in [\u0027Average Salary ($)\u0027, \u0027Predicted Wage Growth Over Next 5 Years ($)\u0027, \u0027Predicted New Jobs Over Next 5 Years\u0027]])\ndf_user_summary \u003d df_user_summary.reset_index()\ndf_user_summary.columns \u003d [\u0027 \u0027, user_state_name,\u0027National\u0027]\nz.show(df_user_summary)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:29:40.093",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      " ": "string",
+                      "Tasmania": "string",
+                      "National": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": " ",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Tasmania",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "National",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      " ": "string",
+                      "Tasmania": "string",
+                      "National": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Average Salary ($) (State)",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Average Salary ($) (National)",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "runOnSelectionChange": true
+      },
+      "settings": {
+        "params": {
+          "ANZSCO Unit Group": "2600",
+          "ANZSIC Subdivision Name": "",
+          "State": "TAS",
+          "Occupation (ANZSCO Unit Group)": "2412"
+        },
+        "forms": {
+          "Occupation (ANZSCO Unit Group)": {
+            "type": "Select",
+            "options": [
+              {
+                "value": "4115",
+                "displayName": "Aboriginal and Torres Strait Islander health worker"
+              },
+              {
+                "value": "2211",
+                "displayName": "Accountant"
+              },
+              {
+                "value": "5511",
+                "displayName": "Accounting clerk"
+              },
+              {
+                "value": "2111",
+                "displayName": "Actor, dancer or other entertainer"
+              },
+              {
+                "value": "2241",
+                "displayName": "Actuary, mathematician or statistician"
+              },
+              {
+                "value": "5311",
+                "displayName": "Administration assistant or office worker"
+              },
+              {
+                "value": "5100",
+                "displayName": "Administrator - type not specified"
+              },
+              {
+                "value": "2251",
+                "displayName": "Advertising and marketing professional"
+              },
+              {
+                "value": "1311",
+                "displayName": "Advertising and sales manager"
+              },
+              {
+                "value": "4231",
+                "displayName": "Aged or disabled carer"
+              },
+              {
+                "value": "8410",
+                "displayName": "Agricultural labourer - type not specified"
+              },
+              {
+                "value": "2341",
+                "displayName": "Agricultural or forestry scientist"
+              },
+              {
+                "value": "3111",
+                "displayName": "Agricultural technician"
+              },
+              {
+                "value": "7211",
+                "displayName": "Agricultural, forestry or horticultural plant operator"
+              },
+              {
+                "value": "3421",
+                "displayName": "Air conditioning and refrigeration mechanic"
+              },
+              {
+                "value": "2311",
+                "displayName": "Air transport professionals"
+              },
+              {
+                "value": "3231",
+                "displayName": "Aircraft maintenance engineer"
+              },
+              {
+                "value": "4111",
+                "displayName": "Ambulance officer or paramedic"
+              },
+              {
+                "value": "1491",
+                "displayName": "Amusement, fitness or sports centre manager"
+              },
+              {
+                "value": "2532",
+                "displayName": "Anaesthetist"
+              },
+              {
+                "value": "3611",
+                "displayName": "Animal attendant or trainer"
+              },
+              {
+                "value": "9393",
+                "displayName": "Apprentice OR trainee - textile, clothing OR footwear trades worker"
+              },
+              {
+                "value": "9311",
+                "displayName": "Apprentice or trainee - agricultural or medical technician"
+              },
+              {
+                "value": "9361",
+                "displayName": "Apprentice or trainee - animal attendant, trainer or shearer"
+              },
+              {
+                "value": "9324",
+                "displayName": "Apprentice or trainee - automotive - other"
+              },
+              {
+                "value": "9321",
+                "displayName": "Apprentice or trainee - automotive mechanic or electrician"
+              },
+              {
+                "value": "9331",
+                "displayName": "Apprentice or trainee - bricklayer, or carpenter and joiner"
+              },
+              {
+                "value": "9510",
+                "displayName": "Apprentice or trainee - business services"
+              },
+              {
+                "value": "9420",
+                "displayName": "Apprentice or trainee - care and community services"
+              },
+              {
+                "value": "9811",
+                "displayName": "Apprentice or trainee - cleaning services"
+              },
+              {
+                "value": "9530",
+                "displayName": "Apprentice or trainee - clerical services"
+              },
+              {
+                "value": "9899",
+                "displayName": "Apprentice or trainee - deck or fishing hand, or autoglazier"
+              },
+              {
+                "value": "9341",
+                "displayName": "Apprentice or trainee - electrician"
+              },
+              {
+                "value": "9342",
+                "displayName": "Apprentice or trainee - electronics or telecommunications trades worker"
+              },
+              {
+                "value": "9841",
+                "displayName": "Apprentice or trainee - farm, forestry or garden worker"
+              },
+              {
+                "value": "9550",
+                "displayName": "Apprentice or trainee - financial services"
+              },
+              {
+                "value": "9332",
+                "displayName": "Apprentice or trainee - floor finisher"
+              },
+              {
+                "value": "9351",
+                "displayName": "Apprentice or trainee - food trades worker"
+              },
+              {
+                "value": "9831",
+                "displayName": "Apprentice or trainee - food, drink or meat processor"
+              },
+              {
+                "value": "9391",
+                "displayName": "Apprentice or trainee - hair dresser"
+              },
+              {
+                "value": "9410",
+                "displayName": "Apprentice or trainee - health and welfare support services"
+              },
+              {
+                "value": "9362",
+                "displayName": "Apprentice or trainee - horticultural trades worker"
+              },
+              {
+                "value": "9431",
+                "displayName": "Apprentice or trainee - hospitality"
+              },
+              {
+                "value": "9313",
+                "displayName": "Apprentice or trainee - information technology technician or telecommunications technical specialist"
+              },
+              {
+                "value": "9323",
+                "displayName": "Apprentice or trainee - mechanical trades engineering trades worker"
+              },
+              {
+                "value": "9322",
+                "displayName": "Apprentice or trainee - metal fabrication engineering trades worker"
+              },
+              {
+                "value": "9712",
+                "displayName": "Apprentice or trainee - miner"
+              },
+              {
+                "value": "9399",
+                "displayName": "Apprentice or trainee - miscellaneous technicians or trades worker"
+              },
+              {
+                "value": "9334",
+                "displayName": "Apprentice or trainee - plumber"
+              },
+              {
+                "value": "9392",
+                "displayName": "Apprentice or trainee - printer or graphic artist"
+              },
+              {
+                "value": "9452",
+                "displayName": "Apprentice or trainee - sport and recreation"
+              },
+              {
+                "value": "9741",
+                "displayName": "Apprentice or trainee - storeperson"
+              },
+              {
+                "value": "9333",
+                "displayName": "Apprentice or trainee - tiler or plasterer"
+              },
+              {
+                "value": "9730",
+                "displayName": "Apprentice or trainee - transport and distribution driver"
+              },
+              {
+                "value": "9394",
+                "displayName": "Apprentice or trainee - wood trades worker"
+              },
+              {
+                "value": "1211",
+                "displayName": "Aquaculture farmer"
+              },
+              {
+                "value": "8411",
+                "displayName": "Aquaculture worker"
+              },
+              {
+                "value": "2321",
+                "displayName": "Architect or landscape architect"
+              },
+              {
+                "value": "3121",
+                "displayName": "Architectural, building or surveying technician"
+              },
+              {
+                "value": "2242",
+                "displayName": "Archivist, curator or records manager"
+              },
+              {
+                "value": "2121",
+                "displayName": "Artistic director, media producer or presenter"
+              },
+              {
+                "value": "8322",
+                "displayName": "Assembly line worker"
+              },
+              {
+                "value": "6111",
+                "displayName": "Auctioneer, or stock and station agent"
+              },
+              {
+                "value": "2212",
+                "displayName": "Auditor, company secretary or corporate treasurer"
+              },
+              {
+                "value": "2122",
+                "displayName": "Author, or book or script editor"
+              },
+              {
+                "value": "7311",
+                "displayName": "Automobile driver"
+              },
+              {
+                "value": "3211",
+                "displayName": "Automotive electrician"
+              },
+              {
+                "value": "3511",
+                "displayName": "Baker or pastrycook"
+              },
+              {
+                "value": "5521",
+                "displayName": "Bank teller, officer or employee"
+              },
+              {
+                "value": "4311",
+                "displayName": "Bar attendant or barista"
+              },
+              {
+                "value": "2711",
+                "displayName": "Barrister"
+              },
+              {
+                "value": "4511",
+                "displayName": "Beauty therapist"
+              },
+              {
+                "value": "5611",
+                "displayName": "Betting clerk"
+              },
+              {
+                "value": "3921",
+                "displayName": "Binder, finisher or screen printer"
+              },
+              {
+                "value": "3991",
+                "displayName": "Boat builder or shipwright"
+              },
+              {
+                "value": "5512",
+                "displayName": "Bookkeeper"
+              },
+              {
+                "value": "3311",
+                "displayName": "Bricklayer or stonemason"
+              },
+              {
+                "value": "8211",
+                "displayName": "Building or plumbing labourer"
+              },
+              {
+                "value": "7312",
+                "displayName": "Bus or coach driver"
+              },
+              {
+                "value": "3512",
+                "displayName": "Butcher or smallgoods maker"
+              },
+              {
+                "value": "3941",
+                "displayName": "Cabinet maker"
+              },
+              {
+                "value": "1411",
+                "displayName": "Café or restaurant manager"
+              },
+              {
+                "value": "4312",
+                "displayName": "Café worker"
+              },
+              {
+                "value": "1492",
+                "displayName": "Call or contact centre or customer service manager"
+              },
+              {
+                "value": "5411",
+                "displayName": "Call or contact centre worker"
+              },
+              {
+                "value": "3931",
+                "displayName": "Canvas or leather goods maker"
+              },
+              {
+                "value": "8111",
+                "displayName": "Car detailer"
+              },
+              {
+                "value": "1412",
+                "displayName": "Caravan park manager"
+              },
+              {
+                "value": "8991",
+                "displayName": "Caretaker"
+              },
+              {
+                "value": "3312",
+                "displayName": "Carpenter and joiner"
+              },
+              {
+                "value": "2322",
+                "displayName": "Cartographer or surveyor"
+              },
+              {
+                "value": "6311",
+                "displayName": "Checkout operator or office cashier"
+              },
+              {
+                "value": "3513",
+                "displayName": "Chef"
+              },
+              {
+                "value": "2331",
+                "displayName": "Chemical or materials engineer"
+              },
+              {
+                "value": "3992",
+                "displayName": "Chemical, gas, petroleum or power generation plant operator"
+              },
+              {
+                "value": "2342",
+                "displayName": "Chemist, or food and wine scientist"
+              },
+              {
+                "value": "1111",
+                "displayName": "Chief executive officer or managing director"
+              },
+              {
+                "value": "1341",
+                "displayName": "Child care centre director"
+              },
+              {
+                "value": "4211",
+                "displayName": "Child carer"
+              },
+              {
+                "value": "2521",
+                "displayName": "Chiropractor or osteopath"
+              },
+              {
+                "value": "3122",
+                "displayName": "Civil engineering draftsperson or technician"
+              },
+              {
+                "value": "2332",
+                "displayName": "Civil engineering professional"
+              },
+              {
+                "value": "7111",
+                "displayName": "Clay, concrete, glass or stone processing machine operator"
+              },
+              {
+                "value": "8112",
+                "displayName": "Cleaner - commercial"
+              },
+              {
+                "value": "8113",
+                "displayName": "Cleaner - domestic"
+              },
+              {
+                "value": "8110",
+                "displayName": "Cleaner - type not specified"
+              },
+              {
+                "value": "5300",
+                "displayName": "Clerk - type not specified"
+              },
+              {
+                "value": "3932",
+                "displayName": "Clothing trades worker"
+              },
+              {
+                "value": "1391",
+                "displayName": "Commissioned officer - management"
+              },
+              {
+                "value": "2522",
+                "displayName": "Complementary health therapist"
+              },
+              {
+                "value": "2631",
+                "displayName": "Computer network professional"
+              },
+              {
+                "value": "8212",
+                "displayName": "Concreter"
+              },
+              {
+                "value": "1493",
+                "displayName": "Conference and event organiser"
+              },
+              {
+                "value": "8210",
+                "displayName": "Construction and mining labourers"
+              },
+              {
+                "value": "1331",
+                "displayName": "Construction manager"
+              },
+              {
+                "value": "9261",
+                "displayName": "Consultant - IT business analyst"
+              },
+              {
+                "value": "9254",
+                "displayName": "Consultant - clinical nurse"
+              },
+              {
+                "value": "9133",
+                "displayName": "Consultant - construction manager"
+              },
+              {
+                "value": "9233",
+                "displayName": "Consultant - engineering"
+              },
+              {
+                "value": "9234",
+                "displayName": "Consultant - environmental"
+              },
+              {
+                "value": "9222",
+                "displayName": "Consultant - financial investment"
+              },
+              {
+                "value": "9223",
+                "displayName": "Consultant - human resources"
+              },
+              {
+                "value": "9552",
+                "displayName": "Consultant - insurance (clerical)"
+              },
+              {
+                "value": "9224",
+                "displayName": "Consultant - management"
+              },
+              {
+                "value": "9225",
+                "displayName": "Consultant - marketing and public relations"
+              },
+              {
+                "value": "9250",
+                "displayName": "Consultant - medical"
+              },
+              {
+                "value": "9251",
+                "displayName": "Consultant - occupational health and safety"
+              },
+              {
+                "value": "9612",
+                "displayName": "Consultant - real estate representative"
+              },
+              {
+                "value": "9621",
+                "displayName": "Consultant - sales assistant (retail)"
+              },
+              {
+                "value": "9611",
+                "displayName": "Consultant - sales representative (wholesale)"
+              },
+              {
+                "value": "9221",
+                "displayName": "Consultant - tax accountant"
+              },
+              {
+                "value": "9232",
+                "displayName": "Consultant - urban and regional planner"
+              },
+              {
+                "value": "9599",
+                "displayName": "Consultant, apprentice or trainee - justice and legal services, insurance claims investigation"
+              },
+              {
+                "value": "9451",
+                "displayName": "Consultant, apprentice or trainee - personal service or travel"
+              },
+              {
+                "value": "9442",
+                "displayName": "Consultant, apprentice or trainee - security and correctional services"
+              },
+              {
+                "value": "5111",
+                "displayName": "Contract, program or project administrator"
+              },
+              {
+                "value": "5991",
+                "displayName": "Conveyancer or legal executive"
+              },
+              {
+                "value": "3514",
+                "displayName": "Cook"
+              },
+              {
+                "value": "1321",
+                "displayName": "Corporate services manager"
+              },
+              {
+                "value": "2721",
+                "displayName": "Counsellor"
+              },
+              {
+                "value": "5612",
+                "displayName": "Courier or postal deliverer"
+              },
+              {
+                "value": "5992",
+                "displayName": "Court or legal clerk"
+              },
+              {
+                "value": "7121",
+                "displayName": "Crane, hoist or lift operator"
+              },
+              {
+                "value": "5522",
+                "displayName": "Credit or loans officer"
+              },
+              {
+                "value": "8412",
+                "displayName": "Crop farm worker"
+              },
+              {
+                "value": "1212",
+                "displayName": "Crop farmer"
+              },
+              {
+                "value": "2621",
+                "displayName": "Database or systems administrator, or IT security specialist"
+              },
+              {
+                "value": "5993",
+                "displayName": "Debt collector"
+              },
+              {
+                "value": "8992",
+                "displayName": "Deck or fishing hand"
+              },
+              {
+                "value": "4411",
+                "displayName": "Defence force member - other ranks"
+              },
+              {
+                "value": "7321",
+                "displayName": "Delivery driver"
+              },
+              {
+                "value": "4112",
+                "displayName": "Dental hygienist, technician or therapist"
+              },
+              {
+                "value": "4232",
+                "displayName": "Dental nurse or assistant"
+              },
+              {
+                "value": "2523",
+                "displayName": "Dental practitioner"
+              },
+              {
+                "value": "2320",
+                "displayName": "Designer - type not specified"
+              },
+              {
+                "value": "2511",
+                "displayName": "Dietician"
+              },
+              {
+                "value": "4113",
+                "displayName": "Diversional therapist"
+              },
+              {
+                "value": "2530",
+                "displayName": "Doctor - specialist - type not specified"
+              },
+              {
+                "value": "3120",
+                "displayName": "Draftsperson - type not specified"
+              },
+              {
+                "value": "7122",
+                "displayName": "Driller, miner or shot firer"
+              },
+              {
+                "value": "7300",
+                "displayName": "Driver - type not specified"
+              },
+              {
+                "value": "4512",
+                "displayName": "Driving instructor"
+              },
+              {
+                "value": "7212",
+                "displayName": "Earthmoving plant operator"
+              },
+              {
+                "value": "2243",
+                "displayName": "Economist"
+              },
+              {
+                "value": "2491",
+                "displayName": "Education advisor or reviewer"
+              },
+              {
+                "value": "4221",
+                "displayName": "Education aide"
+              },
+              {
+                "value": "3422",
+                "displayName": "Electrical distribution trades worker"
+              },
+              {
+                "value": "2333",
+                "displayName": "Electrical engineer"
+              },
+              {
+                "value": "3123",
+                "displayName": "Electrical engineering draftsperson or technician"
+              },
+              {
+                "value": "3411",
+                "displayName": "Electrician"
+              },
+              {
+                "value": "3124",
+                "displayName": "Electronic engineering draftsperson or technician"
+              },
+              {
+                "value": "3423",
+                "displayName": "Electronic equipment trades worker"
+              },
+              {
+                "value": "2334",
+                "displayName": "Electronics engineer"
+              },
+              {
+                "value": "2330",
+                "displayName": "Engineer - type not specified"
+              },
+              {
+                "value": "1332",
+                "displayName": "Engineering manager"
+              },
+              {
+                "value": "4114",
+                "displayName": "Enrolled or mothercraft nurse"
+              },
+              {
+                "value": "2343",
+                "displayName": "Environmental scientist"
+              },
+              {
+                "value": "8300",
+                "displayName": "Factory or process worker - type not specified"
+              },
+              {
+                "value": "1210",
+                "displayName": "Farmer - type not specified"
+              },
+              {
+                "value": "2323",
+                "displayName": "Fashion, industrial or jewellery designer"
+              },
+              {
+                "value": "8511",
+                "displayName": "Fast food cook"
+              },
+              {
+                "value": "8213",
+                "displayName": "Fencer"
+              },
+              {
+                "value": "5613",
+                "displayName": "Filing clerk"
+              },
+              {
+                "value": "2123",
+                "displayName": "Film, television radio or stage director"
+              },
+              {
+                "value": "1322",
+                "displayName": "Finance manager"
+              },
+              {
+                "value": "2221",
+                "displayName": "Financial broker"
+              },
+              {
+                "value": "2222",
+                "displayName": "Financial dealer"
+              },
+              {
+                "value": "2223",
+                "displayName": "Financial investment advisor or manager"
+              },
+              {
+                "value": "4412",
+                "displayName": "Fire or emergency service worker"
+              },
+              {
+                "value": "4521",
+                "displayName": "Fitness instructor"
+              },
+              {
+                "value": "3321",
+                "displayName": "Floor finisher"
+              },
+              {
+                "value": "3621",
+                "displayName": "Florist"
+              },
+              {
+                "value": "8311",
+                "displayName": "Food or drink factory worker"
+              },
+              {
+                "value": "8413",
+                "displayName": "Forestry or logging worker"
+              },
+              {
+                "value": "7213",
+                "displayName": "Forklift driver"
+              },
+              {
+                "value": "8911",
+                "displayName": "Freight or furniture handler"
+              },
+              {
+                "value": "4513",
+                "displayName": "Funeral worker"
+              },
+              {
+                "value": "3993",
+                "displayName": "Gallery, library or museum technician"
+              },
+              {
+                "value": "4514",
+                "displayName": "Gallery, museum or tour guide"
+              },
+              {
+                "value": "4313",
+                "displayName": "Gaming worker"
+              },
+              {
+                "value": "8414",
+                "displayName": "Garden or nursery labourer"
+              },
+              {
+                "value": "3622",
+                "displayName": "Gardener"
+              },
+              {
+                "value": "1112",
+                "displayName": "General manager"
+              },
+              {
+                "value": "2531",
+                "displayName": "General medical practitioner"
+              },
+              {
+                "value": "2344",
+                "displayName": "Geologist or geophysicist"
+              },
+              {
+                "value": "3331",
+                "displayName": "Glazier"
+              },
+              {
+                "value": "2324",
+                "displayName": "Graphic or web designer, or illustrator"
+              },
+              {
+                "value": "3922",
+                "displayName": "Graphic pre-press trades worker"
+              },
+              {
+                "value": "3623",
+                "displayName": "Greenkeeper"
+              },
+              {
+                "value": "3911",
+                "displayName": "Hairdresser"
+              },
+              {
+                "value": "8993",
+                "displayName": "Handyperson"
+              },
+              {
+                "value": "1342",
+                "displayName": "Health and welfare services manager"
+              },
+              {
+                "value": "4310",
+                "displayName": "Hospitality employee - type not specified"
+              },
+              {
+                "value": "1413",
+                "displayName": "Hotel or motel manager"
+              },
+              {
+                "value": "4314",
+                "displayName": "Hotel service manager"
+              },
+              {
+                "value": "8114",
+                "displayName": "Housekeeper"
+              },
+              {
+                "value": "5994",
+                "displayName": "Human resource clerk"
+              },
+              {
+                "value": "1323",
+                "displayName": "Human resource manager"
+              },
+              {
+                "value": "2231",
+                "displayName": "Human resource professional"
+              },
+              {
+                "value": "2611",
+                "displayName": "IT business or systems analyst"
+              },
+              {
+                "value": "1351",
+                "displayName": "IT manager"
+              },
+              {
+                "value": "2600",
+                "displayName": "IT professional - type not specified"
+              },
+              {
+                "value": "6212",
+                "displayName": "IT sales assistant"
+              },
+              {
+                "value": "2252",
+                "displayName": "IT sales professional"
+              },
+              {
+                "value": "2632",
+                "displayName": "IT support or test engineer"
+              },
+              {
+                "value": "3131",
+                "displayName": "IT support technician"
+              },
+              {
+                "value": "2232",
+                "displayName": "IT trainer"
+              },
+              {
+                "value": "1333",
+                "displayName": "Importer, exporter or wholesaler"
+              },
+              {
+                "value": "7112",
+                "displayName": "Industrial spray painter"
+              },
+              {
+                "value": "2335",
+                "displayName": "Industrial, mechanical or production engineer"
+              },
+              {
+                "value": "2412",
+                "displayName": "Infant or primary school teacher"
+              },
+              {
+                "value": "5412",
+                "displayName": "Inquiry clerk"
+              },
+              {
+                "value": "5995",
+                "displayName": "Inspector or regulatory officer"
+              },
+              {
+                "value": "8214",
+                "displayName": "Insulation or home improvement installer"
+              },
+              {
+                "value": "6112",
+                "displayName": "Insurance agent or salesperson"
+              },
+              {
+                "value": "5996",
+                "displayName": "Insurance investigator, loss adjuster or risk surveyor"
+              },
+              {
+                "value": "5523",
+                "displayName": "Insurance, money market or statistical clerk"
+              },
+              {
+                "value": "2244",
+                "displayName": "Intelligence or policy analyst"
+              },
+              {
+                "value": "2325",
+                "displayName": "Interior designer"
+              },
+              {
+                "value": "2533",
+                "displayName": "Internal medicine specialist"
+              },
+              {
+                "value": "3994",
+                "displayName": "Jeweller"
+              },
+              {
+                "value": "2124",
+                "displayName": "Journalist or other writer"
+              },
+              {
+                "value": "2712",
+                "displayName": "Judicial or other legal professionals"
+              },
+              {
+                "value": "5321",
+                "displayName": "Keyboard operator"
+              },
+              {
+                "value": "8513",
+                "displayName": "Kitchen hand"
+              },
+              {
+                "value": "8200",
+                "displayName": "Labourer - type not specified"
+              },
+              {
+                "value": "2245",
+                "displayName": "Land economist or valuer"
+              },
+              {
+                "value": "8115",
+                "displayName": "Laundry worker"
+              },
+              {
+                "value": "1113",
+                "displayName": "Legislator"
+              },
+              {
+                "value": "2246",
+                "displayName": "Librarian"
+              },
+              {
+                "value": "5997",
+                "displayName": "Library assistant"
+              },
+              {
+                "value": "1414",
+                "displayName": "Licensed club manager"
+              },
+              {
+                "value": "2345",
+                "displayName": "Life scientist"
+              },
+              {
+                "value": "8416",
+                "displayName": "Livestock and mixed crop farm worker"
+              },
+              {
+                "value": "8415",
+                "displayName": "Livestock farm worker"
+              },
+              {
+                "value": "1213",
+                "displayName": "Livestock farmer"
+              },
+              {
+                "value": "7100",
+                "displayName": "Machine operator - type not specified"
+              },
+              {
+                "value": "5614",
+                "displayName": "Mail sorter"
+              },
+              {
+                "value": "2247",
+                "displayName": "Management and organisation analyst"
+              },
+              {
+                "value": "1100",
+                "displayName": "Manager or director - type not specified"
+              },
+              {
+                "value": "1334",
+                "displayName": "Manufacturer"
+              },
+              {
+                "value": "2312",
+                "displayName": "Marine transport professional"
+              },
+              {
+                "value": "5615",
+                "displayName": "Market research interviewer"
+              },
+              {
+                "value": "4116",
+                "displayName": "Massage therapist"
+              },
+              {
+                "value": "8312",
+                "displayName": "Meat boners and slicer, or slaughterer"
+              },
+              {
+                "value": "8313",
+                "displayName": "Meat, poultry or seafood process worker"
+              },
+              {
+                "value": "8310",
+                "displayName": "Meatworker - type not specified"
+              },
+              {
+                "value": "3125",
+                "displayName": "Mechanical engineering draftsperson or technician"
+              },
+              {
+                "value": "2512",
+                "displayName": "Medical imaging professional"
+              },
+              {
+                "value": "2346",
+                "displayName": "Medical laboratory scientist"
+              },
+              {
+                "value": "3112",
+                "displayName": "Medical technician"
+              },
+              {
+                "value": "3221",
+                "displayName": "Metal casting, forging or finishing trades worker"
+              },
+              {
+                "value": "8391",
+                "displayName": "Metal engineering process worker"
+              },
+              {
+                "value": "3232",
+                "displayName": "Metal fitter or machinist"
+              },
+              {
+                "value": "7123",
+                "displayName": "Metal press operator"
+              },
+              {
+                "value": "2413",
+                "displayName": "Middle school teacher"
+              },
+              {
+                "value": "2541",
+                "displayName": "Midwife"
+              },
+              {
+                "value": "2336",
+                "displayName": "Mining engineer"
+              },
+              {
+                "value": "9997",
+                "displayName": "Miscellaneous type not specified"
+              },
+              {
+                "value": "1214",
+                "displayName": "Mixed crop and livestock farmer"
+              },
+              {
+                "value": "6391",
+                "displayName": "Model or sales demonstrator"
+              },
+              {
+                "value": "3212",
+                "displayName": "Motor mechanic"
+              },
+              {
+                "value": "6213",
+                "displayName": "Motor vehicle and vehicle parts salesperson"
+              },
+              {
+                "value": "8994",
+                "displayName": "Motor vehicle parts and accessories fitter"
+              },
+              {
+                "value": "2612",
+                "displayName": "Multimedia specialist or web developer"
+              },
+              {
+                "value": "2112",
+                "displayName": "Music professional"
+              },
+              {
+                "value": "2540",
+                "displayName": "Nurse - type not specified"
+              },
+              {
+                "value": "2542",
+                "displayName": "Nurse educator or researcher"
+              },
+              {
+                "value": "3624",
+                "displayName": "Nurseryperson"
+              },
+              {
+                "value": "2543",
+                "displayName": "Nursing supervisor or manager"
+              },
+              {
+                "value": "4233",
+                "displayName": "Nursing support or personal care worker"
+              },
+              {
+                "value": "2513",
+                "displayName": "Occupational and environmental health professional"
+              },
+              {
+                "value": "2524",
+                "displayName": "Occupational therapist"
+              },
+              {
+                "value": "5121",
+                "displayName": "Office administrator or manager"
+              },
+              {
+                "value": "2514",
+                "displayName": "Optometrist or orthoptist"
+              },
+              {
+                "value": "1419",
+                "displayName": "Other accommodation or hospitality manager"
+              },
+              {
+                "value": "3129",
+                "displayName": "Other building or engineering technician"
+              },
+              {
+                "value": "8116",
+                "displayName": "Other cleaner"
+              },
+              {
+                "value": "5619",
+                "displayName": "Other clerical or office support worker"
+              },
+              {
+                "value": "8219",
+                "displayName": "Other construction or mining labourer"
+              },
+              {
+                "value": "1344",
+                "displayName": "Other education manager"
+              },
+              {
+                "value": "2339",
+                "displayName": "Other engineering professional"
+              },
+              {
+                "value": "8399",
+                "displayName": "Other factory process worker"
+              },
+              {
+                "value": "8419",
+                "displayName": "Other farm, forestry or garden worker"
+              },
+              {
+                "value": "2519",
+                "displayName": "Other health diagnostic and promotion professionals"
+              },
+              {
+                "value": "4319",
+                "displayName": "Other hospitality worker"
+              },
+              {
+                "value": "1499",
+                "displayName": "Other hospitality, retail or service manager"
+              },
+              {
+                "value": "2249",
+                "displayName": "Other information and organisation professional"
+              },
+              {
+                "value": "7119",
+                "displayName": "Other machine operator"
+              },
+              {
+                "value": "2539",
+                "displayName": "Other medical practitioners"
+              },
+              {
+                "value": "5999",
+                "displayName": "Other miscellaneous clerical or administrative worker"
+              },
+              {
+                "value": "8999",
+                "displayName": "Other miscellaneous labourers"
+              },
+              {
+                "value": "3999",
+                "displayName": "Other miscellaneous technician and trades worker"
+              },
+              {
+                "value": "7219",
+                "displayName": "Other mobile plant operator"
+              },
+              {
+                "value": "2349",
+                "displayName": "Other natural or physical science professional"
+              },
+              {
+                "value": "4518",
+                "displayName": "Other personal service worker"
+              },
+              {
+                "value": "6219",
+                "displayName": "Other sales assistant or salesperson"
+              },
+              {
+                "value": "1399",
+                "displayName": "Other specialist manager"
+              },
+              {
+                "value": "7129",
+                "displayName": "Other stationary plant operator"
+              },
+              {
+                "value": "4522",
+                "displayName": "Outdoor adventure guide"
+              },
+              {
+                "value": "8321",
+                "displayName": "Packer"
+              },
+              {
+                "value": "3322",
+                "displayName": "Painting trades worker"
+              },
+              {
+                "value": "3241",
+                "displayName": "Panel beater"
+              },
+              {
+                "value": "7113",
+                "displayName": "Paper or wood processing machine operator"
+              },
+              {
+                "value": "8512",
+                "displayName": "Pastry cook\u0027s assistant"
+              },
+              {
+                "value": "8215",
+                "displayName": "Paving and surfacing labourer"
+              },
+              {
+                "value": "5513",
+                "displayName": "Payroll clerk"
+              },
+              {
+                "value": "3995",
+                "displayName": "Performing arts technician"
+              },
+              {
+                "value": "5211",
+                "displayName": "Personal assistant"
+              },
+              {
+                "value": "4515",
+                "displayName": "Personal care consultant"
+              },
+              {
+                "value": "4230",
+                "displayName": "Personal carers and assistants"
+              },
+              {
+                "value": "2515",
+                "displayName": "Pharmacist"
+              },
+              {
+                "value": "6214",
+                "displayName": "Pharmacy sales assistant"
+              },
+              {
+                "value": "2113",
+                "displayName": "Photographer"
+              },
+              {
+                "value": "7114",
+                "displayName": "Photographic developer and printer"
+              },
+              {
+                "value": "2525",
+                "displayName": "Physiotherapist"
+              },
+              {
+                "value": "7210",
+                "displayName": "Plant operator or labourer - type not specified"
+              },
+              {
+                "value": "3332",
+                "displayName": "Plasterer"
+              },
+              {
+                "value": "8392",
+                "displayName": "Plastics or rubber factory worker"
+              },
+              {
+                "value": "7115",
+                "displayName": "Plastics or rubber production machine operator"
+              },
+              {
+                "value": "3341",
+                "displayName": "Plumber"
+              },
+              {
+                "value": "2526",
+                "displayName": "Podiatrist"
+              },
+              {
+                "value": "4413",
+                "displayName": "Police"
+              },
+              {
+                "value": "1324",
+                "displayName": "Policy and planning manager"
+              },
+              {
+                "value": "5122",
+                "displayName": "Practice manager"
+              },
+              {
+                "value": "2411",
+                "displayName": "Pre-school or kindergarten teacher"
+              },
+              {
+                "value": "3233",
+                "displayName": "Precision metal trades worker"
+              },
+              {
+                "value": "3113",
+                "displayName": "Primary products inspector"
+              },
+              {
+                "value": "3923",
+                "displayName": "Printer"
+              },
+              {
+                "value": "3920",
+                "displayName": "Printer - type not specified"
+              },
+              {
+                "value": "8995",
+                "displayName": "Printing assistant or table worker"
+              },
+              {
+                "value": "4421",
+                "displayName": "Prison officer"
+              },
+              {
+                "value": "2492",
+                "displayName": "Private teacher or tutor"
+              },
+              {
+                "value": "8393",
+                "displayName": "Product quality controller"
+              },
+              {
+                "value": "1335",
+                "displayName": "Production manager"
+              },
+              {
+                "value": "2610",
+                "displayName": "Programmer - type not specified"
+              },
+              {
+                "value": "2534",
+                "displayName": "Psychiatrist"
+              },
+              {
+                "value": "2723",
+                "displayName": "Psychologist"
+              },
+              {
+                "value": "2253",
+                "displayName": "Public relations officer"
+              },
+              {
+                "value": "5610",
+                "displayName": "Public servant - administrative service officer - levels 1-2"
+              },
+              {
+                "value": "5310",
+                "displayName": "Public servant - administrative service officer - levels 3-4"
+              },
+              {
+                "value": "5911",
+                "displayName": "Purchasing or supply logistics clerk"
+              },
+              {
+                "value": "8216",
+                "displayName": "Railway track worker"
+              },
+              {
+                "value": "6121",
+                "displayName": "Real estate sales agent"
+              },
+              {
+                "value": "5912",
+                "displayName": "Receiving and dispatching clerk"
+              },
+              {
+                "value": "5421",
+                "displayName": "Receptionist"
+              },
+              {
+                "value": "2544",
+                "displayName": "Registered nurse"
+              },
+              {
+                "value": "2722",
+                "displayName": "Religious leader"
+              },
+              {
+                "value": "1325",
+                "displayName": "Research and development manager"
+              },
+              {
+                "value": "1421",
+                "displayName": "Retail manager"
+              },
+              {
+                "value": "6392",
+                "displayName": "Retail or wool buyer"
+              },
+              {
+                "value": "6215",
+                "displayName": "Retail supervisor"
+              },
+              {
+                "value": "3333",
+                "displayName": "Roof tiler"
+              },
+              {
+                "value": "8996",
+                "displayName": "Rubbish or recycling collector"
+              },
+              {
+                "value": "3126",
+                "displayName": "Safety inspector"
+              },
+              {
+                "value": "6211",
+                "displayName": "Sales assistant - general"
+              },
+              {
+                "value": "6200",
+                "displayName": "Sales assistant - type not specified"
+              },
+              {
+                "value": "6113",
+                "displayName": "Sales representative"
+              },
+              {
+                "value": "1343",
+                "displayName": "School principal"
+              },
+              {
+                "value": "2410",
+                "displayName": "School teacher - type not specified"
+              },
+              {
+                "value": "3114",
+                "displayName": "Science technician"
+              },
+              {
+                "value": "2340",
+                "displayName": "Scientist - type not specified"
+              },
+              {
+                "value": "2414",
+                "displayName": "Secondary school teacher"
+              },
+              {
+                "value": "5212",
+                "displayName": "Secretary"
+              },
+              {
+                "value": "4422",
+                "displayName": "Security officer or guard"
+              },
+              {
+                "value": "1392",
+                "displayName": "Senior non-commissioned defence force member"
+              },
+              {
+                "value": "6216",
+                "displayName": "Service station attendant"
+              },
+              {
+                "value": "7116",
+                "displayName": "Sewing machinist"
+              },
+              {
+                "value": "3612",
+                "displayName": "Shearer"
+              },
+              {
+                "value": "3222",
+                "displayName": "Sheetmetal trades worker"
+              },
+              {
+                "value": "8912",
+                "displayName": "Shelf filler"
+              },
+              {
+                "value": "3996",
+                "displayName": "Signwriter"
+              },
+              {
+                "value": "2724",
+                "displayName": "Social professionals"
+              },
+              {
+                "value": "2725",
+                "displayName": "Social worker"
+              },
+              {
+                "value": "2613",
+                "displayName": "Software and applications programmer"
+              },
+              {
+                "value": "2713",
+                "displayName": "Solicitor"
+              },
+              {
+                "value": "4234",
+                "displayName": "Special care worker"
+              },
+              {
+                "value": "2415",
+                "displayName": "Special needs teacher"
+              },
+              {
+                "value": "2527",
+                "displayName": "Speech professional or audiologist"
+              },
+              {
+                "value": "4523",
+                "displayName": "Sports coaches, instructors and officials"
+              },
+              {
+                "value": "4524",
+                "displayName": "Sportsperson"
+              },
+              {
+                "value": "7411",
+                "displayName": "Storeperson"
+              },
+              {
+                "value": "6217",
+                "displayName": "Street vendor or related salesperson"
+              },
+              {
+                "value": "8217",
+                "displayName": "Structural steel construction worker"
+              },
+              {
+                "value": "3223",
+                "displayName": "Structural steel or welding trades worker"
+              },
+              {
+                "value": "1336",
+                "displayName": "Supply and distribution manager"
+              },
+              {
+                "value": "2535",
+                "displayName": "Surgeon"
+              },
+              {
+                "value": "5616",
+                "displayName": "Switchboard operator"
+              },
+              {
+                "value": "2422",
+                "displayName": "TAFE teacher or tutor"
+              },
+              {
+                "value": "2400",
+                "displayName": "Teacher - type not specified"
+              },
+              {
+                "value": "2493",
+                "displayName": "Teacher of English to speakers of other languages"
+              },
+              {
+                "value": "2254",
+                "displayName": "Technical sales representative"
+              },
+              {
+                "value": "2633",
+                "displayName": "Telecommunications engineering professional"
+              },
+              {
+                "value": "3132",
+                "displayName": "Telecommunications technical specialist"
+              },
+              {
+                "value": "3424",
+                "displayName": "Telecommunications trades worker"
+              },
+              {
+                "value": "6393",
+                "displayName": "Telemarketer"
+              },
+              {
+                "value": "7117",
+                "displayName": "Textile or footwear production machine operator"
+              },
+              {
+                "value": "6394",
+                "displayName": "Ticket seller"
+              },
+              {
+                "value": "8394",
+                "displayName": "Timber or wood process worker"
+              },
+              {
+                "value": "3234",
+                "displayName": "Toolmaker or engineering patternmaker"
+              },
+              {
+                "value": "4516",
+                "displayName": "Tourism or travel adviser"
+              },
+              {
+                "value": "7313",
+                "displayName": "Train or tram driver"
+              },
+              {
+                "value": "2233",
+                "displayName": "Training and development officer"
+              },
+              {
+                "value": "1494",
+                "displayName": "Transport services manager"
+              },
+              {
+                "value": "4517",
+                "displayName": "Travel attendant"
+              },
+              {
+                "value": "7331",
+                "displayName": "Truck driver"
+              },
+              {
+                "value": "2421",
+                "displayName": "University lecturer or tutor"
+              },
+              {
+                "value": "3933",
+                "displayName": "Upholsterer"
+              },
+              {
+                "value": "2326",
+                "displayName": "Urban and regional planner"
+              },
+              {
+                "value": "3242",
+                "displayName": "Vehicle body builder or trimmer"
+              },
+              {
+                "value": "3243",
+                "displayName": "Vehicle painter"
+              },
+              {
+                "value": "8997",
+                "displayName": "Vending machine attendant"
+              },
+              {
+                "value": "2347",
+                "displayName": "Veterinarian"
+              },
+              {
+                "value": "3613",
+                "displayName": "Veterinary nurse"
+              },
+              {
+                "value": "2114",
+                "displayName": "Visual arts and crafts professional"
+              },
+              {
+                "value": "4315",
+                "displayName": "Waiter"
+              },
+              {
+                "value": "3334",
+                "displayName": "Wall and floor tiler"
+              },
+              {
+                "value": "4117",
+                "displayName": "Welfare support worker"
+              },
+              {
+                "value": "2726",
+                "displayName": "Welfare, recreation or community arts worker"
+              },
+              {
+                "value": "6395",
+                "displayName": "Window dresser"
+              },
+              {
+                "value": "3942",
+                "displayName": "Wood machinist or other wood trades worker"
+              }
+            ],
+            "name": "Occupation (ANZSCO Unit Group)",
+            "displayName": "Occupation (ANZSCO Unit Group)",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "State": {
+            "type": "Select",
+            "options": [
+              {
+                "value": "ACT",
+                "displayName": "Australian Capital Territory"
+              },
+              {
+                "value": "NSW",
+                "displayName": "New South Wales"
+              },
+              {
+                "value": "VIC",
+                "displayName": "Victoria"
+              },
+              {
+                "value": "QLD",
+                "displayName": "Queensland"
+              },
+              {
+                "value": "TAS",
+                "displayName": "Tasmania"
+              },
+              {
+                "value": "SA",
+                "displayName": "South Australia"
+              },
+              {
+                "value": "NT",
+                "displayName": "Northern Territory"
+              },
+              {
+                "value": "WA",
+                "displayName": "Western Australia"
+              }
+            ],
+            "name": "State",
+            "displayName": "State",
+            "defaultValue": "",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch2 style\u003d\"text-align: centre;\"\u003eInfant or primary school teacher in Tasmania\u003c/h2\u003e\n"
+          },
+          {
+            "type": "TABLE",
+            "data": " \tTasmania\tNational\n%html  \u003cb\u003e\u003ch4 style\u003d\"text-align: centre; font-weight: bold\"\u003eAverage Salary ($)\u003c/h4\u003e \u003c/b\u003e\t15745.06\t16707.15\n%html  \u003cb\u003e\u003ch4 style\u003d\"text-align: centre; font-weight: bold\"\u003ePredicted Wage Growth Over Next 5 Years ($)\u003c/h4\u003e \u003c/b\u003e\t392.0\t1589.42\n%html  \u003cb\u003e\u003ch4 style\u003d\"text-align: centre; font-weight: bold\"\u003ePredicted New Jobs Over Next 5 Years\u003c/h4\u003e \u003c/b\u003e\t372.0\t16336.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567913261950_837758527",
+      "id": "20190908-032741_2096712595",
+      "dateCreated": "2019-09-08 03:27:41.950",
+      "dateStarted": "2019-09-08 05:29:40.100",
+      "dateFinished": "2019-09-08 05:29:40.174",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nprint(\u0027%html \u003ch2 style\u003d\"text-align: centre;\"\u003eLooking for similar jobs in your field?\u003c/h2\u003e\u0027)\nprint(\u0027%html Are you looking to make a career change? You can sort by any of the columns. For example, you might be interested in looking at careers which have many new job openings in the future; or you might be interested in career paths that offer high wage growth.\u0027)\nuser_anzsco_minorgroup\n\ndf_tmp \u003d df_anzsco[(df_anzsco[\u0027ANZSCO Minor Group\u0027]\u003d\u003duser_anzsco_minorgroup) \u0026 (df_anzsco[\u0027State\u0027]\u003d\u003duser_state)][[\n    \u0027ANZSCO\u0027,\n    \u0027ANZSCO Name\u0027,\n                                                                                                                \u0027Average Salary ($) (State)\u0027,\n                                                                                                                \u0027Average Salary ($) (National)\u0027,\n                                                                                                                \u0027Predicted 5-Year Wage Growth ($) (State)\u0027,\n                                                                                                                \u0027Predicted 5-Year Wage Growth ($) (National)\u0027,\n                                                                                                                \u0027Predicted New Jobs Over Next 5 Years (State)\u0027,\n                                                                                                                \u0027Predicted New Jobs Over Next 5 Years (National)\u0027]\n    \n    ]\ndf_tmp.columns \u003d [\u0027ANZSCO\u0027, \u0027ANZSCO Name\u0027,\n                \u0027Average Salary ($) ({})\u0027.format(user_state_name),\n                \u0027Average Salary ($) (National)\u0027,\n                \u0027Predicted 5-Year Wage Growth ($) ({})\u0027.format(user_state_name),\n                \u0027Predicted 5-Year Wage Growth ($) (National)\u0027,\n                \u0027Predicted New Jobs Over Next 5 Years ({})\u0027.format(user_state_name),\n                \u0027Predicted New Jobs Over Next 5 Years (National)\u0027]\n                \ndf_tmp.values[:,2:] \u003d df_tmp.values[:,2:].astype(np.float) # This is needed because sometimes Zeppelin wants to interpret the entire table as strings\nz.show(df_tmp)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:34:57.405",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "ANZSCO Name",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Average Salary ($) (Tasmania)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Average Salary ($) (National)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Predicted 5-Year Wage Growth ($) (Tasmania)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Predicted 5-Year Wage Growth ($) (National)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Predicted New Jobs Over Next 5 Years (Tasmania)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "desc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "Predicted New Jobs Over Next 5 Years (National)",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ANZSCO Name": "string",
+                      "Average Salary ($) (Tasmania)": "number",
+                      "Average Salary ($) (National)": "number",
+                      "Predicted 5-Year Wage Growth ($) (Tasmania)": "number",
+                      "Predicted 5-Year Wage Growth ($) (National)": "number",
+                      "Predicted New Jobs Over Next 5 Years (Tasmania)": "number",
+                      "Predicted New Jobs Over Next 5 Years (National)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ANZSCO": "string",
+                      "ANZSCO Name": "string",
+                      "Average Salary ($) (Tasmania)": "string",
+                      "Average Salary ($) (National)": "string",
+                      "Predicted 5-Year Wage Growth ($) (Tasmania)": "string",
+                      "Predicted 5-Year Wage Growth ($) (National)": "string",
+                      "Predicted New Jobs Over Next 5 Years (Tasmania)": "string",
+                      "Predicted New Jobs Over Next 5 Years (National)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch2 style\u003d\"text-align: centre;\"\u003eLooking for similar jobs in your field?\u003c/h2\u003e\n"
+          },
+          {
+            "type": "HTML",
+            "data": "Are you looking to make a career change? You can sort by any of the columns. For example, you might be interested in looking at careers which have many new job openings in the future; or you might be interested in career paths that offer high wage growth.\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "ANZSCO\tANZSCO Name\tAverage Salary ($) (Tasmania)\tAverage Salary ($) (National)\tPredicted 5-Year Wage Growth ($) (Tasmania)\tPredicted 5-Year Wage Growth ($) (National)\tPredicted New Jobs Over Next 5 Years (Tasmania)\tPredicted New Jobs Over Next 5 Years (National)\n2410\tSchool teacher - type not specified\t14220.31\t15386.49\t-3258.0\t-13398.93\t174.0\t9699.0\n2411\tPre-school or kindergarten teacher\t13692.24\t10920.4\t285.0\t1005.48\t50.0\t8990.0\n2412\tInfant or primary school teacher\t15745.06\t16707.15\t392.0\t1589.42\t372.0\t16336.0\n2413\tMiddle school teacher\t15985.9\t17138.54\t464.0\t1851.68\t5.0\t19.0\n2414\tSecondary school teacher\t17741.28\t19709.25\t424.0\t1730.78\t241.0\t9855.0\n2415\tSpecial needs teacher\t13334.48\t14106.65\t535.0\t2257.37\t13.0\t1035.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567918552094_1947741678",
+      "id": "20190908-045552_2055498874",
+      "dateCreated": "2019-09-08 04:55:52.094",
+      "dateStarted": "2019-09-08 05:34:57.413",
+      "dateFinished": "2019-09-08 05:34:57.422",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf_timeseries \u003d pd.read_pickle(\u0027/data/pickles/anzsco_timeseries_salary_with_5y_predictions.pkl\u0027)\nanzsco_codes \u003d list(df_tmp[\u0027ANZSCO\u0027].values)\ndf_timeseries_codes \u003d df_timeseries.columns\ncommon_codes \u003d list(set(anzsco_codes).intersection(set(df_timeseries_codes)))\n\ndf_timeseries_tmp \u003d df_timeseries[common_codes].transpose().copy()\ndf_timeseries_tmp.values \u003d df_timeseries_tmp.astype(np.double)\nif len(common_codes)\u003e0:\n    z.show(df_timeseries[common_codes].transpose())",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:38:05.622",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "2011",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2012",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2013",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2014",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2015",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2016",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2017",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2018",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2019",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2020",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2021",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "2022",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "2011": "string",
+                      "2012": "string",
+                      "2013": "string",
+                      "2014": "string",
+                      "2015": "string",
+                      "2016": "string",
+                      "2017": "string",
+                      "2018": "string",
+                      "2019": "string",
+                      "2020": "string",
+                      "2021": "string",
+                      "2022": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "2011\t2012\t2013\t2014\t2015\t2016\t2017\t2018\t2019\t2020\t2021\t2022\n42240.05855513308\t43244.8578313253\t43136.055629139075\t25741.02841918295\t20286.511968085106\t22296.1426920855\t58473.170944741534\t56733.90976475428\t63463.27324682893\t52489.24117169175\t52487.04530833611\t45074.23821585156\n39972.203336422615\t41645.35200230481\t43009.50199246096\t44302.56363544864\t45517.37682017869\t47094.46298506038\t48318.083187632285\t48296.016845328355\t48364.61095922627\t48400.946470651\t48820.25029435397\t49323.56714571217\n53428.60414078675\t55473.95127701375\t57192.458257160266\t59324.68272189349\t61008.71616413512\t63686.333225528244\t63915.09454061252\t64123.20793034282\t63805.36843640101\t64305.57092351225\t64725.952207212096\t65766.77803613446\n48713.64367916303\t50365.77740249296\t52023.11677493313\t53410.58805400646\t54970.50202049358\t56718.307122468395\t56294.26400916964\t56537.2385581299\t56451.81387088406\t57111.236077702415\t57601.08257834931\t58551.62990678858\n60797.34831443398\t62572.35029355671\t64582.26190059758\t66631.29762024227\t68420.35030136407\t71488.51426487387\t72526.50051395057\t72695.89443445462\t72468.7392789623\t72781.0918272362\t73250.67934213876\t74257.28208853136\n53573.52772141486\t55160.886173205035\t56665.18389031104\t58551.225001685656\t60319.23634017207\t63099.192614612315\t63729.18798577183\t63903.37643941034\t63618.06546238879\t63959.08534245468\t64360.28745433367\t65318.61042022401\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567913703495_-1929589033",
+      "id": "20190908-033503_581407255",
+      "dateCreated": "2019-09-08 03:35:03.495",
+      "dateStarted": "2019-09-08 05:37:22.533",
+      "dateFinished": "2019-09-08 05:37:22.540",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf_timeseries.index",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:37:45.288",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Int64Index([2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,\n            2022],\n           dtype\u003d\u0027int64\u0027)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567919689525_-1042573563",
+      "id": "20190908-051449_1708461855",
+      "dateCreated": "2019-09-08 05:14:49.525",
+      "dateStarted": "2019-09-08 05:37:45.306",
+      "dateFinished": "2019-09-08 05:37:45.312",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nanzsco_codes",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:34:25.055",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[\u00272410\u0027, \u00272411\u0027, \u00272412\u0027, \u00272413\u0027, \u00272414\u0027, \u00272415\u0027]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567919851344_811284467",
+      "id": "20190908-051731_238178698",
+      "dateCreated": "2019-09-08 05:17:31.344",
+      "dateStarted": "2019-09-08 05:34:25.060",
+      "dateFinished": "2019-09-08 05:34:25.063",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-08 05:28:17.472",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1567920497471_1003029868",
+      "id": "20190908-052817_1294044459",
+      "dateCreated": "2019-09-08 05:28:17.471",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "JobSeeker - ANZSCO View",
+  "id": "2EMRB4EQJ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "python:shared_process": [],
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
