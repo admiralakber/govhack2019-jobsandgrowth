@@ -14,5 +14,5 @@ services:
       - ./letsencrypt_nginx/data/certbot/conf:/etc/letsencrypt
       - ./letsencrypt_nginx/data/certbot/www:/var/www/certbot
 
-  jekyll:
+  site:
     command: jekyll serve --config _config.yml,_config.prod.yml --future
