@@ -10,14 +10,14 @@ alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
 category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+description: Starting a Business is hard enough. We want to give you the best possible advice. This form shows the insights of our artificial intelligence that has ingested the latest information of the Australian business industry.
 
 ---
 
 <style>
 .iframe-container {
   overflow: hidden;
-  padding-top: 1000%;
+  padding-top: 300%;
   position: relative;
 }
  
@@ -31,6 +31,27 @@ description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At du
 }
 </style>
 
+<h3>We will tell you:</h3>
+<h5 style="text-align:left;">
+<i class="fa fa-check" aria-hidden="true"></i> How profitable your industry is and if your occupation is going to grow. 
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> Suggestions of occupations that are similar to yours that we predict have more growth opportunities.
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> Your closest TAFE or University to skill up and diagonally if we find similar growing fields.
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> Your nearest innovation hub 
+<br><br/>
+<i class="fa fa-check" aria-hidden="true"></i> What state your occupation is growing the fastest.
+</h5>
+
+<h1>What industry do you want to start a business in?</h1>
+
 <div class="iframe-container">
 <iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EP3DHFMC/paragraph/20190907-134737_1172436355?asIframe"></iframe>
+</div>
+
+<h1>What occupation do you see yourself wanting to work in?</h1>
+
+<div class="iframe-container">
+<iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EMRB4EQJ/paragraph/20190908-032741_2096712595?asIframe"></iframe>
 </div>

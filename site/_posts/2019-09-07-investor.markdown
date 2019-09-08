@@ -7,6 +7,40 @@ date: 2019-09-07
 img: growth-facilitator.jpg
 thumbnail: growth-facilitator.jpg
 alt: image-alt
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+description: We have all the information you could possibly want and more. Our platform is continuously learning!
 
 ---
+
+<h3>We will tell you:</h3>
+<h5 style="text-align:left;">
+<i class="fa fa-check" aria-hidden="true"></i> The flow of occupations, i.e. Occupation A grows when Occupation B falls with a delay of T
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> How many people are searching for a particular occupation
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> How many people are considering of starting a business in a certain field, and where.
+</h5>
+
+
+<h1>Platform glimpse</h1>
+
+<h3>Most job seekers are looking for:</h3>
+1. Aged or disabled carer [532 hits today]
+2. Registered Nurse [328 hits today]
+3. Child carer [210 hits today]
+
+<h3>Entrepreneurs are interested in:</h3>
+1. Judisical or other legal professions [302 hits]
+2. Property and Real Estate [302 hits]
+3. Accounting services [202 hits]
+
+<h1>Industry glimpse</h1>
+
+<div class="iframe-container">
+<iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EP3DHFMC/paragraph/20190907-134737_1172436355?asIframe"></iframe>
+</div>
+
+<h1>Human resource is evolving over time</h1>
+
+<div class="iframe-container">
+<iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EMRB4EQJ/paragraph/20190908-032741_2096712595?asIframe"></iframe>
+</div>

@@ -8,9 +8,42 @@ img: job-seeker.jpg
 thumbnail: job-seeker.jpg
 alt: image-alt
 project-date: 2019-09-08
-client: Start Bootstrap
-category: Web Development
 description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
 
 ---
+
+<style>
+.iframe-container {
+  overflow: hidden;
+  padding-top: 1000%;
+  position: relative;
+}
+ 
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+</style>
+
+<h3>We will tell you:</h3>
+<h5 style="text-align:left;">
+<i class="fa fa-check" aria-hidden="true"></i> Suggestions of occupations that are similar to yours that we predict have more growth opportunities.
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> Your closest TAFE or University to skill up and diagonally if we find similar growing fields.
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> What state your occupation is growing the fastest.
+<br/><br/>
+<i class="fa fa-check" aria-hidden="true"></i> Whether your occupation (or similar) is opened for skilled visa applications in the Australian Capital Territory
+</h5>
+
+
+<h1>What occupation do you see yourself wanting to work in?</h1>
+
+<div class="iframe-container">
+<iframe scrolling="no" src="http://{{ site.zeppelin }}/#/notebook/2EMRB4EQJ/paragraph/20190908-032741_2096712595?asIframe"></iframe>
+</div>
 
