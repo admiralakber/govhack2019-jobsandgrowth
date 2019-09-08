@@ -4,3 +4,6 @@
 *.~lock*
 # zeppelin
 zeppelin/logs
+
+#jekyll
+*.jekyll-cache*
